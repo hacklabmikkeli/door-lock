@@ -1,0 +1,21 @@
+{
+  "name": "hacklab-door-lock",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "belvain",
+  "license": "MIT",
+  "dependencies": {
+    "casper-nodejs": "^1.0.0",
+    "log4js": "^2.3.3",
+    "modem": "https://github.com/hkurhinen/modem",
+    "mongoose": "^4.11.10",
+    "nconf": "^0.8.4",
+    "play-sound": "^1.1.1",
+    "request": "^2.81.0",
+    "xlsx": "^0.11.3"
+  }
+}
