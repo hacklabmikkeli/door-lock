@@ -20,19 +20,19 @@
   const numberSync = require('./schedulers/numberSync');
   numberSync.start();
 
-  const sendPost = (url) => {
+  const sendPost = (url, userName) => {
     request({
       url: url,
       method: "POST",
-      json: {"text":"Could not hold the door... Someone opened it!"}
+      json: {"text":`Could not hold the door... ${userName} opened it!`}
     }, function(err, res, body) {
       //Do not care about the outcome
     });
   };
 
-  const fireWebhooks = () => {
+  const fireWebhooks = (userName) => {
     for(var i = 0, j = config.get('webhooks').length;i < j;i++){
-      sendPost(config.get('webhooks')[i]);
+      sendPost(config.get('webhooks')[i], userName);
       console.log('sending webhook to: '+config.get('webhooks')[i]);
     }
   };
@@ -77,7 +77,8 @@
 
       player.play('./sound/granted.mp3');
       log.access.info('Granted access to '+user.name);
-      fireWebhooks();
+      let userDisplayName = user.showName ? user.name : 'Someone';
+      fireWebhooks(userDisplayName);
       openDoor();
     });
   });
