@@ -82,8 +82,9 @@
 
         let monthlyUser20 = getBooleanValue(8, row, worksheet);
         let monthlyUser40 = getBooleanValue(9, row, worksheet);
+        let userBanned = getBooleanValue(12, row, worksheet);
 
-        if (!monthlyUser20 && !monthlyUser40) {
+        if ((!monthlyUser20 && !monthlyUser40) || userBanned) {
           continue;
         }
 
